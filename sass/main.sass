@@ -1,0 +1,108 @@
+@use '_mixin' as m
+@use '_article'
+
+$primary-color: #F48C06
+$secondry-color: #FFF3E4  
+$three-color: #363881  
+$four-color: #65DAFF
+$five-color: #5B72EE
+$background-color: #ffffff
+$text-color: #3A3A51
+$text-secondry-color: #CFCFDE
+$font: soucre ,sans-serif
+
+
+html
+    @include m.auto-position
+    box-sizing: border-box
+    font-size: 16px
+
+body
+    font-family: $font
+    color: $text-color
+    background-color: $background-color
+    height: 100%
+
+.container
+    display: grid
+    height: 100%
+    padding: 10px 40px 0px 40px
+    grid-template-columns: 1fr 1fr 1fr
+    grid-template-rows: 0.2fr 1fr 0.1fr
+    grid-template-areas: "nav nav nav" "cover1 cover1 cover2" "tagline tagline tagline" "main1 main2 main3" "footer footer footer"
+    // grid-gap: 0.2rem
+
+.logo
+    background-color: yellow
+    margin: 5px auto
+    padding: 10px
+    float: left
+
+.nav
+    @include m.inline-list
+    background-color: $secondry-color
+    text-align: right
+    padding: 10px
+    margin: 0
+    min-height: 50px
+    grid-area: nav
+    li 
+        color: $text-color
+        padding: 10px
+        a
+            text-decoration: none
+
+.cover1
+    margin: 0
+    padding: 40px
+    background-color: $secondry-color
+    grid-area: cover1
+
+.cover2
+    margin: 0
+    padding: 10px
+    background-color: $secondry-color
+    grid-area: cover2
+
+.tagline
+    @include m.auto-text
+    min-height: 50px
+    text-align: center
+    border: 1px solid #000000
+    background-color: $background-color
+    grid-area: tagline
+
+.main1
+    @include m.auto-text
+    color: $text-secondry-color
+    background-color: $five-color
+    grid-area: main1
+
+.main2
+    @include m.auto-text
+    color: $text-secondry-color
+    background-color: $five-color
+    grid-area: main2
+   
+.main3
+    @include m.auto-text
+    color: $text-secondry-color
+    background-color: $five-color
+    grid-area: main3
+
+footer
+    @include m.inline-list
+    @include m.auto-text
+    background-color: $secondry-color
+    grid-area: footer
+    li
+        color: $text-color
+        a
+            text-decoration: none
+
+@media only screen and (max-width: 550px)
+    .container
+        grid-template-columns: 1fr
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr
+        grid-template-areas: "nav" "cover1" "cover2" "tagline" "main1" "main2" "main3" "footer"
+    
